@@ -7,6 +7,11 @@ class Pos:
 		self.x = round(x,3)
 		self.y = round(y,3)
 		self.z = round(z,3)
+	def pos_print(self):
+		print("x:" + self.x +",y:" + self.y + ",z:" + self.z)
+
+def distance(pos1,pos2):
+	return math.sqrt(math.pow(pos1.x - pos2.x,2) + math.pow(pos1.y - pos2.y,2) + math.pow(pos1.z - pos2.z,2))
 
 #calculate hand position acording to arm rotation
 
@@ -72,8 +77,5 @@ def only_hand_pos(w2,t2):
 def into_radian(x):
 	return math.pi * float(x) / 180.0 
 
-#print(hand_pos(1,0,0,0,0,0))
-#print(hand_pos(2,0,0,0,0,0))
-#print(hand_pos(1,90,0,0,0,0))
 
 
