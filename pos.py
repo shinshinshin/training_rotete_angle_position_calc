@@ -4,9 +4,9 @@ import math
 
 class Pos:
 	def __init__(self, x = 0.0, y = 0.0, z = 0.0):
-		self.x = round(x,3)
-		self.y = round(y,3)
-		self.z = round(z,3)
+		self.x = round(x,9)
+		self.y = round(y,9)
+		self.z = round(z,9)
 	def pos_print(self):
 		print("x:" + self.x +",y:" + self.y + ",z:" + self.z)
 
