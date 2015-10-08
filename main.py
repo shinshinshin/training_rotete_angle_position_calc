@@ -54,10 +54,19 @@ def hand_pos(w1,t1,w2,t2):
 	# 90 - direct to forward
 	l1_p = elbow_pos(w1,t1)
 	
-	x = l1_p.x + l2 * math.sin(w1-w2) * math.cos(t2)
-	y = l1_p.y + l2 * math.cos(w1-w2) * math.sin(t2)
-	z = l1_p.z + l2 * (math.cos(w1-w2)) * ( -1 * math.cos(t2))
+	l2_p = only_hand_pos(w2,t2)
 
+	x = l1_p.x + l2_p.x * math.cos(w1) + l2_p.z * -1 * math.sin(w1)
+	y = l1_p.y + l2_p.y * math.cos(t1) + l2_p.z * math.sin(t1) * math.cos(w1)
+	z = l1_p.z + l2_p.z * math.cos(w1) * math.cos(t1)
+
+	return Pos(x,y,z)
+
+def only_hand_pos(w2,t2):
+	l2 = 20
+	x = l2 * math.sin(-w2) * math.cos(t2)
+	y = l2 * math.sin(w2) * math.sin(t2)
+	z = l2 * math.cos(-w2) * -math.cos(t2)
 	return Pos(x,y,z)
 
 def into_radian(x):

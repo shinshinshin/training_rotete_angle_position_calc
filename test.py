@@ -78,6 +78,33 @@ class Test_Hand_Pos(unittest.TestCase):
 # x beside horizontal leaving +
 # y forward horizontal forward + 
 # z vertical upper +
+	def test_only_hand_pos_1(self):
+		w2 = main.into_radian(0)
+		t2 = main.into_radian(0)
+		expected = main.Pos(0,0,-20)
+		actual = main.only_hand_pos(w2,t2)
+		self.assertEqual(expected.x, actual.x)
+		self.assertEqual(expected.y, actual.y)
+		self.assertEqual(expected.z, actual.z)
+
+	def test_only_hand_pos_2(self):
+		w2 = main.into_radian(90)
+		t2 = main.into_radian(90)
+		expected = main.Pos(0,20,0)
+		actual = main.only_hand_pos(w2,t2)
+		self.assertEqual(expected.x, actual.x)
+		self.assertEqual(expected.y, actual.y)
+		self.assertEqual(expected.z, actual.z)
+
+	def test_only_hand_pos_3(self):
+		w2 = main.into_radian(90)
+		t2 = main.into_radian(0)
+		expected = main.Pos(-20,0,0)
+		actual = main.only_hand_pos(w2,t2)
+		self.assertEqual(expected.x, actual.x)
+		self.assertEqual(expected.y, actual.y)
+		self.assertEqual(expected.z, actual.z)
+
 	def test_hand_pos_1(self):
 		expected = main.Pos(0,0,-40)
 		actual = main.hand_pos(0,0,0,0)
@@ -86,13 +113,12 @@ class Test_Hand_Pos(unittest.TestCase):
 		self.assertEqual(expected.z, actual.z)
 
 	def test_hand_pos_2(self):
-		expected = main.Pos(0,20,20)
+		expected = main.Pos(0,20,-20)
 		actual = main.hand_pos(0,0,90,90)
 		self.assertEqual(expected.x, actual.x)
 		self.assertEqual(expected.y, actual.y)
 		self.assertEqual(expected.z, actual.z)
 
-	"""
 	def test_hand_pos_3(self):
 		expected = main.Pos(40,0,0)
 		actual = main.hand_pos(90,0,0,0)
@@ -100,6 +126,14 @@ class Test_Hand_Pos(unittest.TestCase):
 		self.assertEqual(expected.y, actual.y)
 		self.assertEqual(expected.z, actual.z)
 
+	def test_hand_pos_4(self):
+		expected = main.Pos(20,0,-20)
+		actual = main.hand_pos(0,0,90,180)
+		self.assertEqual(expected.x, actual.x)
+		self.assertEqual(expected.y, actual.y)
+		self.assertEqual(expected.z, actual.z)
+
+	"""
 	def test_hand_pos_4(self):
 		expected = main.Pos(r_2/2.0*40.0,0,-1 * r_2/2.0*40)
 		actual = main.hand_pos(45,0,0,0)
